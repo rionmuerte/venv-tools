@@ -1,24 +1,18 @@
-function mkvenv {
-    if [ -z "$1" ] ; then
+mkvenv() {
+    if [[ $# -ne 1 ]] ; then
         echo "Empty arument, must have name."
-        exit 1
+        return 1
     fi
-    venvs_directory='Documents/venvs'
-    original_directory=$(pwd)
-    cd
+    venvs_directory=~/Documents/venvs
     cd "$venvs_directory"
     python -m venv "$1"
-    cd "$original_directory"
+    cd - > /dev/null
 }
 
-function activate-venv {
-    if [ -z "$1" ] ; then
-        echo "Empty arument, must have name."
-        exit 1
+activate-venv() {
+    if [[ $# -ne 1 ]] ; then
+        echo "Incorrect number of arguments"
+        return 1
     fi
-    original_directory=$(pwd)
-    env="Documents/venvs/$1/Scripts/activate"
-    cd
-    source "$env"
-    cd "$original_directory"
+    . ~/"Documents/venvs/$1/Scripts/activate"
 }
