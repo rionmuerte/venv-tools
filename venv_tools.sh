@@ -1,6 +1,6 @@
 mkvenv() {
     if [[ $# -ne 1 ]] ; then
-        echo "Empty arument, must have name."
+        echo "Incorrect number of arguments."
         return 1
     fi
     venvs_directory=~/Documents/venvs
@@ -11,7 +11,7 @@ mkvenv() {
 
 activate-venv() {
     if [[ $# -ne 1 ]] ; then
-        echo "Incorrect number of arguments"
+        echo "Incorrect number of arguments."
         return 1
     fi
     . ~/"Documents/venvs/$1/Scripts/activate"
